@@ -13,7 +13,7 @@ export default function Ordenador() {
             onBlur={() => setAberto(false)}
             >
             <span >Ordenar Por</span>
-            {aberto ? < MdKeyboardArrowUp/> : < MdKeyboardArrowDown/>}
+            {aberto ? < MdKeyboardArrowUp size={20}/> : < MdKeyboardArrowDown size={20}/>}
             <div className={classNames({
                 [styles.ordenador__options]: true,
                 [styles["ordenador__options--ativo"]]: aberto,

@@ -4,7 +4,12 @@ import opcoes from "./opcoes.json";
 import classNames from "classnames";
 import {MdKeyboardArrowDown, MdKeyboardArrowUp} from "react-icons/md";
 
-export default function Ordenador() {
+interface OrdenadorProps{
+    ordenador: string,
+    setOrdenador: React.Dispatch<React.SetStateAction<string>>
+}
+
+export default function Ordenador({ordenador, setOrdenador} :OrdenadorProps) {
     const [aberto, setAberto] = useState(false);
     return (
         <button 
@@ -19,7 +24,7 @@ export default function Ordenador() {
                 [styles["ordenador__options--ativo"]]: aberto,
             }) }>
                 {opcoes.map(opcao => (
-                    <div className={styles.ordenador__option} key={opcao.value}>
+                    <div className={styles.ordenador__option} key={opcao.value} onClick={() => setOrdenador(opcao.value)}>
                         {opcao.nome}
                     </div>
 

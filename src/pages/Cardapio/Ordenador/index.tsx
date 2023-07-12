@@ -11,13 +11,17 @@ interface OrdenadorProps{
 
 export default function Ordenador({ordenador, setOrdenador} :OrdenadorProps) {
     const [aberto, setAberto] = useState(false);
+    const nomeOrdenador = ordenador && opcoes.find(opcao => opcao.value === ordenador)?.nome;
     return (
         <button 
-            className={styles.ordenador} 
+            className={classNames({
+                [styles.ordenador]: true,
+                [styles["ordenador--ativo"]] : ordenador !== "",
+            })} 
             onClick={() => setAberto(!aberto)}
             onBlur={() => setAberto(false)}
             >
-            <span >Ordenar Por</span>
+            <span >{nomeOrdenador || "Ordenar Por"}</span>
             {aberto ? < MdKeyboardArrowUp size={20}/> : < MdKeyboardArrowDown size={20}/>}
             <div className={classNames({
                 [styles.ordenador__options]: true,
